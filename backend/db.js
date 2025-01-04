@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-mongoose.connect("your mongodb url")
+mongoose.connect("mongodb+srv://saxenaaniket02:nvyV6qAQgB74ZPg7@cluster0.fyfx5.mongodb.net/PayTm")
 
 const UserSchema = new mongoose.Schema({
     username: {
@@ -12,7 +12,7 @@ const UserSchema = new mongoose.Schema({
         maxLength: 30
     },
     password: {
-        type: string,
+        type: String,
         required: true,
         trim: true,
         minLength: 6,
@@ -24,7 +24,7 @@ const UserSchema = new mongoose.Schema({
         maxLength: 50
     },
     lastName: {
-        type: string,
+        type: String,
         required: true,
         trim: true,
         maxLength: 50
