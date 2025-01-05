@@ -41,6 +41,8 @@ router.post("/signup", async (req, res) => {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
     })
+    console.log(user);
+    user.save();
     const userId = user._id;
 
     await Account.create({
@@ -49,7 +51,7 @@ router.post("/signup", async (req, res) => {
     })
 
     const token = jwt.sign({
-        userId
+        user
     }, JWT_SECRET);
 
     res.json({
@@ -109,10 +111,9 @@ router.put('/', authMiddleware, async (req, res) => {
 
     const updatedData = await User.updateOne(
         { _id: req.userId }, // Filter
-        { $set: req.body }   // U   pdate object
+        { $set: req.body }   // Update object
     );
 
-    console.log(updatedData)
 
 
     res.json({
